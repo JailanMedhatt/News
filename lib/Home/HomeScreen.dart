@@ -1,6 +1,7 @@
 import 'package:news/Home/HomeDrawer.dart';
 import 'package:news/Models/Category.dart';
 import 'package:flutter/material.dart';
+import 'package:news/NewsSearchDelegate.dart';
 import 'package:news/Tabs/CategoriesTap.dart';
 
 import 'package:news/Tabs/NewsTap.dart';
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedItem==1?"Settings":selectedCategory==null?"NewsApp": selectedCategory!.title!, style: TextStyle(fontSize: 25),),
+        actions: [IconButton(onPressed:(){showSearch(context: context, delegate: NewsSearchDelegate());}, icon: Icon(Icons.search_sharp, size: 30,))],
       ), drawer: Drawer(
       child: HomeDrawer(onClicked: onItemMenuClicked,),
 

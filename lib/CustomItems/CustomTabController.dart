@@ -34,7 +34,7 @@ NewsViewModel viewModell=NewsViewModel();
                 TabBar(
                   onTap: (index) {
 
-                      viewModell.ChangeselectedIndex(index,widget.sourcesList[viewModell.selectedIndex].id!).then((value){setState(() {
+                      viewModell.ChangeselectedIndex(index,widget.sourcesList[index].id!).then((value){setState(() {
 
                       });});
 

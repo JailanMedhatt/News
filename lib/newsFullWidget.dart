@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/Models/NewsResponse.dart';
 import 'package:news/MyTheme.dart';
@@ -30,10 +31,16 @@ class _NewsFullWidgetState extends State<NewsFullWidget> {
           child: Column(
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(newsArg?.urlToImage??""),
-            ), SizedBox( height: 12),
+          CachedNetworkImage(imageUrl: newsArg?.urlToImage??"",
+            placeholder: (context , url)=>Center(
+              child: CircularProgressIndicator(
+                color: MyTheme.primaryGreen,
+              )), errorWidget:(context, url,error)=>Icon(Icons.error),
+            ),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(15),
+            //   child: Image.network(newsArg?.urlToImage??""),
+            // ), SizedBox( height: 12),
             Text(newsArg.author??"", style: TextStyle(fontSize: 12, color: Colors.blueGrey),),
             SizedBox( height: 6),
             Text(newsArg.description??"", style:TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
